@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Materials/Placeholder.tres" type="Material" id=1]
+[ext_resource path="res://Objects/First Person Character.tscn" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="PlaneMesh" id=2]
+material = ExtResource( 1 )
+size = Vector2( 20, 20 )
+
+[node name="Test Scene" type="Spatial"]
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="Floor" type="StaticBody" parent="Objects"]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Objects/Floor"]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -1, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Objects/Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0512588, 2.38419e-007, -0.031723 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.856718, 0.515786, 0, -0.515786, 0.856718, 0, 7.84673, 0 )
+
+[node name="First Person Character" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17964, 0 )
